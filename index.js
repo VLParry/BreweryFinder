@@ -10,6 +10,7 @@ function getBreweries() {
     fetch("https://api.openbrewerydb.org/breweries?per_page=100")
         .then(resp => resp.json())
         .then(data => {
+            //display the name of the brewries (iteration)
             data.forEach(brewery => {
                 listOfBreweries.innerHTML +=
                     `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
@@ -18,6 +19,7 @@ function getBreweries() {
             clicksOnLinks()
         })
 }
+//When user clicks on brewery, show brewery details (EVENT LISTENER)
 //this function makes the links clickable and brings user to brewery info by calling the displayBrewery function
 const clicksOnLinks = () => {
     const breweries = document.querySelectorAll('a')
@@ -58,16 +60,16 @@ function getBreweriesByState() {
 //fetch breweries from that state (EVENT LISTENER)
 
 
-//display the name of the brewries (iteration)
 
 
-//When user clicks on brewery, show brewery details (EVENT LISTENER)
 
 
-//Show a hide button once the details are displayed
 
 
-//Hide details of brewery (EVENT LISTENER)
+
+
+
+
 
 
 
