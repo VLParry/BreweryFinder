@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
     getBreweries()
-    getRandomBrewery()
+    // getRandomBrewery()
     getBreweriesByState()
 })
 
@@ -13,26 +13,40 @@ function getBreweries() {
         .then(data => {
             data.forEach(brewery => {
                 listOfBreweries.innerHTML +=
-                    `<li> <a href="#">* ${brewery.name} - ${brewery.state}</a></li>`
-            })
+                    `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
 
+            })
+            clicksOnLinks()
         })
 }
+
+const clicksOnLinks = () => {
+    const breweries = document.querySelectorAll('a')
+    breweries.forEach((brewery) =>
+        brewery.addEventListener('click', displayBrewery))
+
+}
+
+const displayBrewery = (event) => {
+    console.log(event.target.dataset.id)
+}
+
+
 //Click a button to get random brewery
 
 
-function getRandomBrewery() {
-    const random = document.getElementById('')
-    fetch("https://api.openbrewerydb.org/breweries/random")
-        .then(resp => resp.json())
-        .then(data => {
-            data.forEach(brewery => {
-                random.innerHTML +=
-                    `<li>${brewery.name} - ${brewery.state}</li>`
-            })
+// function getRandomBrewery() {
+//     const random = document.getElementById('')
+//     fetch("https://api.openbrewerydb.org/breweries/random")
+//         .then(resp => resp.json())
+//         .then(data => {
+//             data.forEach(brewery => {
+//                 random.innerHTML +=
+//                     `<li>${brewery.name} - ${brewery.state}</li>`
+//             })
 
-        })
-}
+//         })
+// }
 
 //Let user input state they want to find breweries in(FORM)
 function getBreweriesByState() {
