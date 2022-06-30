@@ -29,7 +29,31 @@ const clicksOnLinks = () => {
 
 const displayBrewery = (event) => {
     console.log(event.target.dataset.id)
+    const info = document.getElementById('brewery-info')
+    const ul = document.getElementById('breweries')
+    ul.innerHTML = ' '
+    fetch(`https://api.openbrewerydb.org/breweries/${event.target.dataset.id}`)
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            breweryinfo.innerHTML =
+                `<h1>${data.name}</h1>
+    <h3>INFO:</h2>
+    <h4>City:</h4>
+<p>${data.city}</p>
+<h4>State:</h4>
+<p>${data.state}</p>
+<h4>Website:</h4>
+<p>${data.website_url}</p>
+<h4>Phone #: </h4>
+<p>${data.phone}</p>`
+        })
 }
+
+
+
+
+
 
 
 //Click a button to get random brewery
