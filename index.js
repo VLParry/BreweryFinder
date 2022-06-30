@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     getBreweries()
     getRandomBrewery()
+    getBreweriesByState()
 })
 
 
@@ -21,7 +22,7 @@ function getBreweries() {
 
 
 function getRandomBrewery() {
-    const random = document.getElementById('random')
+    const random = document.getElementById('')
     fetch("https://api.openbrewerydb.org/breweries/random")
         .then(resp => resp.json())
         .then(data => {
@@ -34,7 +35,9 @@ function getRandomBrewery() {
 }
 
 //Let user input state they want to find breweries in(FORM)
-
+function getBreweriesByState() {
+    // GET https://api.openbrewerydb.org/breweries?by_state=new_york&per_page=3
+}
 
 //fetch breweries from that state (EVENT LISTENER)
 
