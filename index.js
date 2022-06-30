@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
     getBreweries()
-    // getRandomBrewery()
     getBreweriesByState()
 })
 
@@ -19,14 +18,14 @@ function getBreweries() {
             clicksOnLinks()
         })
 }
-
+//this function makes the links clickable and brings user to brewery info by calling the displayBrewery function
 const clicksOnLinks = () => {
     const breweries = document.querySelectorAll('a')
     breweries.forEach((brewery) =>
         brewery.addEventListener('click', displayBrewery))
 
 }
-
+//this function is what happens when the link of a brewery is clicked. 
 const displayBrewery = (event) => {
     console.log(event.target.dataset.id)
     const info = document.getElementById('brewery-info')
@@ -38,7 +37,7 @@ const displayBrewery = (event) => {
             console.log(data)
             breweryinfo.innerHTML =
                 `<h1>${data.name}</h1>
-    <h3>INFO:</h2>
+   </br>
     <h4>City:</h4>
 <p>${data.city}</p>
 <h4>State:</h4>
@@ -50,27 +49,6 @@ const displayBrewery = (event) => {
         })
 }
 
-
-
-
-
-
-
-//Click a button to get random brewery
-
-
-// function getRandomBrewery() {
-//     const random = document.getElementById('')
-//     fetch("https://api.openbrewerydb.org/breweries/random")
-//         .then(resp => resp.json())
-//         .then(data => {
-//             data.forEach(brewery => {
-//                 random.innerHTML +=
-//                     `<li>${brewery.name} - ${brewery.state}</li>`
-//             })
-
-//         })
-// }
 
 //Let user input state they want to find breweries in(FORM)
 function getBreweriesByState() {
