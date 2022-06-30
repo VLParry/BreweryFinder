@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
 //fetch breweries returns all the breweries to the page once the page is loaded
 function getBreweries() {
     const listOfBreweries = document.getElementById('breweries')
-    fetch("https://api.openbrewerydb.org/breweries?per_page=30")
+    fetch("https://api.openbrewerydb.org/breweries?per_page=100")
         .then(resp => resp.json())
         .then(data => {
             data.forEach(brewery => {

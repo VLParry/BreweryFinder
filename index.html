@@ -6,30 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brewery Finder</title>
-    <!-- Compiled and minified CSS --> 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-<!--  
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--  
 Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 
 
- <body class="black lighten-8">
+<body class="black lighten-8">
     <div class="container yellow darken-2 ">
         <h1 class="center align">Brewery Finder</h1>
     </div>
+
+    <div class="container">
+        <form id="searcb-brewery">
+            <input id="search" type="'text">
+            <input id="form-submit" type="submit" name="submit" value="search">
+        </form>
+        <a class="waves-effect waves-dark btn-large">Click Here</a>
+    </div>
+
     <div id="main" class="container">
-        <button id = "random">Click Me for a Random Brewery!</button>
-<ul id="breweries">
+        <button id="random">Click Me for a Random Brewery!</button>
+        <ul id="breweries">
 
 
-</ul>
+        </ul>
 
     </div>
-    <a class="waves-effect waves-dark btn-large">Click Here</a>
 
 
 
