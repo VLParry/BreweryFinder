@@ -1,24 +1,26 @@
 window.addEventListener('DOMContentLoaded', () => {
-    getBreweries()
-    getBreweriesByState()
+    getAllBreweries()
+    
 })
 
-
+const listOfBreweries = document.getElementById('breweries')
 //fetch breweries returns all the breweries to the page once the page is loaded
-function getBreweries() {
-    const listOfBreweries = document.getElementById('breweries')
-    fetch("https://api.openbrewerydb.org/breweries?per_page=100")
-        .then(resp => resp.json())
-        .then(data => {
-            //display the name of the brewries (iteration)
-            data.forEach(brewery => {
-                listOfBreweries.innerHTML +=
-                    `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
+// function getAllBreweries() {
+  
+//     console.log("listOfBreweries", listOfBreweries)
+//     fetch("https://api.openbrewerydb.org/breweries?per_page=51")
+//         .then(resp => resp.json())
+//         .then(data => {
+//             // console.log("data", data)
+//             // display the name of the breweries (iteration)
+//             data.forEach(brewery => {
+//                 listOfBreweries.innerHTML +=
+//                     `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
 
-            })
-            clicksOnLinks()
-        })
-}
+//             })
+//             clicksOnLinks()
+//         })
+// }
 //When user clicks on brewery, show brewery details (EVENT LISTENER)
 //this function makes the links clickable and brings user to brewery info by calling the displayBrewery function
 const clicksOnLinks = () => {
@@ -39,47 +41,37 @@ const displayBrewery = (event) => {
             console.log(data)
             breweryinfo.innerHTML =
                 `<h1>${data.name}</h1>
-   </br>
-    <h4>City:</h4>
-<p>${data.city}</p>
-<h4>State:</h4>
-<p>${data.state}</p>
-<h4>Website:</h4>
-<p>${data.website_url}</p>
-<h4>Phone #: </h4>
-<p>${data.phone}</p>`
+            </br>
+                <h4>City:</h4>
+                 <p>${data.city}</p>
+                <h4>State:</h4>
+                <p>${data.state}</p>
+                <h4>Website:</h4>
+                <p>${data.website_url}</p>
+                <h4>Phone #: </h4>
+                <p>${data.phone}</p>`
         })
 }
 
 
 //Let user input state they want to find breweries in(FORM)
-function getBreweriesByState() {
-    // GET https://api.openbrewerydb.org/breweries?by_state=new_york&per_page=3
-}
+function getBreweriesByState(state) {
+    
+    fetch(`https://api.openbrewerydb.org/breweries?by_state=${state}`)
+        .then(resp => resp.json())
+        .then(data => {
+            data.forEach(brewery => {
+                listOfBreweries.innerHTML +=
+                    `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`})
+            console.log("data", data)
+        })
+    }
 
+    const form = document.getElementById('search-brewery')
+    form.addEventListener('submit', () => {
+        listOfBreweries.innerHTML
+        const searchInput = document.getElementById('search')
+        const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
+        getBreweriesByState(searchValue)
+    } )
 //fetch breweries from that state (EVENT LISTENER)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const fetchBreweries = () => {
-//     fetch("https://api.openbrewerydb.org/breweries?per_page=30")
-//         .then(resp => resp.json())
-//         .then(data => {
-//             console.log("data", data)
-//         })
-// }
