@@ -17,7 +17,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
             })
     }
-
+    listOfBreweries.addEventListener("mouseover", (event) => {
+        event.target.style.color = "black"
+    })
 
 
     form.addEventListener('submit', (event) => {
@@ -30,9 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-listOfBreweries.addEventListener("mouseover", (event) => {
-    event.target.style.color = "black"
-})
+
 
 
 function displayBrewery(event) {
