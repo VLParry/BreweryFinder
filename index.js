@@ -1,29 +1,32 @@
 window.addEventListener('DOMContentLoaded', () => {
-    // getAllBreweries()
-    
+
 })
-//Let user input state they want to find breweries in(FORM)
-function getBreweriesByState(state) {
-    fetch(`https://api.openbrewerydb.org/breweries?by_state=${state}`)
-       .then(resp => resp.json())
-       .then(data => {
-           data.forEach(brewery => {
-               listOfBreweries.innerHTML +=
-                   `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`})
-           console.log("data", data)
-       })
-       clicksOnLinks()
-   }
-//fetch breweries from that state (EVENT LISTENER)
-   const form = document.getElementById('search-brewery')
-   form.addEventListener('submit', () => {
-       listOfBreweries.innerHTML = ""
-       const searchInput = document.getElementById('search')
-       const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
-       getBreweriesByState(searchValue)
-   } )
 
 const listOfBreweries = document.getElementById('breweries')
+const form = document.getElementById('search-brewery')
+
+//Let user input state they want to find breweries in(FORM)
+function getBreweriesByState(state) {
+    fetch(`https://api.openbrewerydb.org/breweries?by_state=${state}&per_page=50`)
+        .then(resp => resp.json())
+        .then(data => {
+            data.forEach(brewery => {
+                listOfBreweries.innerHTML +=
+                    `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
+            })
+            console.log("data", data)
+        })
+}
+
+
+form.addEventListener('submit', () => {
+    listOfBreweries.innerHTML = ""
+    const searchInput = document.getElementById('search')
+    const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
+    getBreweriesByState(searchValue)
+})
+
+
 
 const clicksOnLinks = () => {
     const breweries = document.querySelectorAll('a')
@@ -57,22 +60,21 @@ const displayBrewery = (event) => {
 
 
 
-//fetch breweries returns all the breweries to the page once the page is loaded
-// function getAllBreweries() {
-  
-//     console.log("listOfBreweries", listOfBreweries)
-//     fetch("https://api.openbrewerydb.org/breweries?per_page=51")
-//         .then(resp => resp.json())
-//         .then(data => {
-//             // console.log("data", data)
-//             // display the name of the breweries (iteration)
-//             data.forEach(brewery => {
-//                 listOfBreweries.innerHTML +=
-//                     `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
+function getAllBreweries() {
 
-//             })
-//             clicksOnLinks()
-//         })
-// }
+
+    fetch("https://api.openbrewerydb.org/breweries?per_page=51")
+        .then(resp => resp.json())
+        .then(data => {
+            // console.log("data", data)
+            // display the name of the breweries (iteration)
+            data.forEach(brewery => {
+                listOfBreweries.innerHTML +=
+                    `<li> <a href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
+
+            })
+            clicksOnLinks()
+        })
+}
 //When user clicks on brewery, show brewery details (EVENT LISTENER)
 //this function makes the links clickable and brings user to brewery info by calling the displayBrewery function
