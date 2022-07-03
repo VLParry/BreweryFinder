@@ -30,6 +30,10 @@ window.addEventListener('DOMContentLoaded', () => {
     })
 })
 
+listOfBreweries.addEventListener("mouseover", (event) => {
+    event.target.style.color = "black"
+})
+
 
 function displayBrewery(event) {
     const breweryInfo = document.getElementById('breweryinfo')
