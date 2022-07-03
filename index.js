@@ -18,8 +18,12 @@ window.addEventListener('DOMContentLoaded', () => {
             })
     }
     listOfBreweries.addEventListener("mouseover", (event) => {
-        event.target.style.color = "black"
-    })
+        event.target.style.color = "red"
+    setTimeout(function () {
+        event.target.style.color = ""
+    }, 300)
+    }, false)
+
 
 
     form.addEventListener('submit', (event) => {
