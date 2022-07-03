@@ -1,7 +1,8 @@
-a {
-    color: hotpink;
-}
 
 #breweryinfo {
-    color: bisque;
+    color: rebeccapurple;
+}
+
+.brewery-name {
+    text-decoration: underline;
 }

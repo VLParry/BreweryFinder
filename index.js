@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
     const listOfBreweries = document.getElementById('breweries')
     const form = document.getElementById('search-brewery')
-    
+
 
     //Let user input state they want to find breweries in(FORM)
     function getBreweriesByState(state) {
@@ -11,34 +11,35 @@ window.addEventListener('DOMContentLoaded', () => {
                 data.forEach(brewery => {
                     listOfBreweries.innerHTML +=
                         `<li> <a onclick="displayBrewery(event)" href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
+
+
                 })
-              
+
             })
     }
-    
-    
+
+
 
     form.addEventListener('submit', (event) => {
         event.preventDefault()
-      
         listOfBreweries.innerHTML = ""
         const searchInput = document.getElementById('search')
         const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
         getBreweriesByState(searchValue)
-        
+
     })
 })
 
 
 function displayBrewery(event) {
-    const info = document.getElementById('brewery-info')
+    const breweryInfo = document.getElementById('breweryinfo')
     const ul = document.getElementById('breweries')
     ul.innerHTML = ' '
     fetch(`https://api.openbrewerydb.org/breweries/${event.target.dataset.id}`)
         .then(resp => resp.json())
         .then(data => {
-          breweryinfo.innerHTML =
-                `<h1>${data.name}</h1>
+            breweryInfo.innerHTML =
+                `<h2 class="brewery-name">${data.name}</h2>
             </br>
                 <h4>City:</h4>
                  <p>${data.city}</p>
@@ -49,7 +50,7 @@ function displayBrewery(event) {
                 <h4>Phone #: </h4>
                 <p>${data.phone}</p>`
         })
-    
+
 }
 
 
