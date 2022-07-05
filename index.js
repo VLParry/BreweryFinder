@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
         listOfBreweries.innerHTML = ""
         const searchInput = document.getElementById('search')
         const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
+        searchInput.value = ''
         getBreweriesByState(searchValue)
 
     })
