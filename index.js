@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('search-brewery')
 
 
+
     //Let user input state they want to find breweries in(FORM)
     function getBreweriesByState(state) {
         fetch(`https://api.openbrewerydb.org/breweries?by_state=${state}&per_page=50`)
@@ -17,15 +18,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
             })
     }
-    listOfBreweries.addEventListener("mouseover", (event) => {
-        event.target.style.color = "red"
-    setTimeout(function () {
-        event.target.style.color = ""
-    }, 300)
-    }, false)
 
 
 
+
+    //allows user to enter state and find breweries in that state (EVENT LISTENER)
     form.addEventListener('submit', (event) => {
         event.preventDefault()
         listOfBreweries.innerHTML = ""
@@ -34,7 +31,17 @@ window.addEventListener('DOMContentLoaded', () => {
         getBreweriesByState(searchValue)
 
     })
+
+
+    //changes link(li) color when the user's mouse goes over it (EVENT LISTENER)
+    listOfBreweries.addEventListener("mouseover", (event) => {
+        event.target.style.color = "red"
+        setTimeout(function () {
+            event.target.style.color = ""
+        }, 300)
+    }, false)
 })
+
 
 
 
