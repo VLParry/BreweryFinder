@@ -5,4 +5,13 @@
 
 .brewery-name {
     text-decoration: underline;
+    color: rgb(7, 111, 37);
+}
+
+#form-submit {
+    color: rgb(93, 9, 12);
+}
+
+#search {
+    color:darkcyan
 }

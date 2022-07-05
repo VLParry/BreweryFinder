@@ -56,7 +56,7 @@ function displayBrewery(event) {
             breweryInfo.innerHTML =
                 `<h2 class="brewery-name">${data.name}</h2>
             </br>
-                <h4>City:</h4>
+                <h4 class="brewery-city">City:</h4>
                  <p>${data.city}</p>
                 <h4>State:</h4>
                 <p>${data.state}</p>
