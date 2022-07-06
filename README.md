@@ -1,4 +1,4 @@
-# Brewery Finder
+# <span style="color:orange">Brewery Finder</span>
 A simple app to find breweries in every US State
 
 ## How to use Brewery Finder:
@@ -7,6 +7,14 @@ A simple app to find breweries in every US State
 3. Click on the brewery you want for more details for
 4. Go to the brewery, order a flight, and tell me which beer you liked best 😃 🍻
 
+## Technologies Used:
+* JavaScript
+* HTML
+* CSS
 
-## Installation Instructions 
-* Clone this repository to your desktop
+## Installation Instructions: 
+* Fork & Clone this repository to your local environment
+* Open index.html in your browser
+
+## Licensing: 
+MIT
