@@ -25,11 +25,11 @@ window.addEventListener('DOMContentLoaded', () => {
     //allows user to enter state and find breweries in that state (EVENT LISTENER)
     form.addEventListener('submit', (event) => {
         event.preventDefault()
-        listOfBreweries.innerHTML = ""
         const searchInput = document.getElementById('search')
         const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
         searchInput.value = ''
         getBreweriesByState(searchValue)
+
 
     })
 
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+//when the individual brewery is chosen from the list, this is what is displayed 
 function displayBrewery(event) {
     const breweryInfo = document.getElementById('breweryinfo')
     const ul = document.getElementById('breweries')
@@ -65,6 +65,7 @@ function displayBrewery(event) {
                 <p>${data.website_url}</p>
                 <h4>Phone #: </h4>
                 <p>${data.phone}</p>`
+            
         })
 
 }
