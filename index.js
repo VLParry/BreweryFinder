@@ -1,10 +1,10 @@
+//DOMContentLoaded EVENT LISTENER
 window.addEventListener('DOMContentLoaded', () => {
     const listOfBreweries = document.getElementById('breweries')
     const form = document.getElementById('search-brewery')
 
-
-
     //Let user input state they want to find breweries in(FORM)
+    //Iterates with forEach through the brewery data and returns those matching their INPUT
     function getBreweriesByState(state) {
         fetch(`https://api.openbrewerydb.org/breweries?by_state=${state}&per_page=50`)
             .then(resp => resp.json())
@@ -12,15 +12,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 data.forEach(brewery => {
                     listOfBreweries.innerHTML +=
                         `<li> <a onclick="displayBrewery(event)" href="#" data-id="${brewery.id}">* ${brewery.name} - ${brewery.state}</a></li>`
-
-
                 })
-
             })
     }
-
-
-
 
     //allows user to enter state and find breweries in that state (EVENT LISTENER)
     form.addEventListener('submit', (event) => {
@@ -29,10 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const searchValue = searchInput.value.toLowerCase().replace(" ", "_")
         searchInput.value = ''
         getBreweriesByState(searchValue)
-
-
     })
-
 
     //changes link(li) color when the user's mouse goes over it (EVENT LISTENER)
     listOfBreweries.addEventListener("mouseover", (event) => {
@@ -42,9 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }, 300)
     }, false)
 })
-
-
-
 
 //when the individual brewery is chosen from the list, this is what is displayed 
 function displayBrewery(event) {
@@ -65,9 +53,7 @@ function displayBrewery(event) {
                 <p>${data.website_url}</p>
                 <h4>Phone #: </h4>
                 <p>${data.phone}</p>`
-            
         })
-
 }
 
 
